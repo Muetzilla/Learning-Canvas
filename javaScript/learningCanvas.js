@@ -92,3 +92,37 @@ function draw() {
       }
     }
   }
+  function drawCurves() {
+    var canvasCurves = document.getElementById('curves');
+    if (canvasCurves.getContext) {
+      var curves = canvasCurves.getContext('2d');
+  
+      // Quadratric curves example
+      curves.beginPath();
+      curves.moveTo(75, 25);
+      curves.quadraticCurveTo(25, 25, 25, 62.5);
+      curves.quadraticCurveTo(25, 100, 50, 100);
+      curves.quadraticCurveTo(50, 120, 30, 125);
+      curves.quadraticCurveTo(60, 120, 65, 100);
+      curves.quadraticCurveTo(125, 100, 125, 62.5);
+      curves.quadraticCurveTo(125, 25, 75, 25);
+      curves.stroke();
+    }
+  }
+  //Kreis und Rechteck werden als Objekt des Types Path2D gespeichert und sind somit wiederverwendbar
+  function drawPath2D() {
+    var canvasPath2D = document.getElementById('path2D');
+    if (canvasPath2D.getContext) {
+      var path2D = canvasPath2D.getContext('2d');
+  
+      var rectangle = new Path2D();
+      rectangle.rect(10, 10, 50, 50);
+  
+      var circle = new Path2D();
+      circle.arc(100, 35, 25, 0, 2 * Math.PI);
+  
+      path2D.stroke(rectangle);
+      path2D.fill(circle);
+    }
+  }
+  
