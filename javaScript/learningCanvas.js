@@ -29,3 +29,18 @@ function draw() {
       rectShape.strokeRect(50, 50, 50, 50);
     }
   }
+  function drawTriangle() {
+    var canvasTriangle = document.getElementById('triangle');
+    if (canvasTriangle.getContext) {
+      var triangle = canvasTriangle.getContext('2d');
+      
+      //Programm soll mit dem Zeichnen der einzelnen Liniene beginnen.
+      triangle.beginPath();
+      //Zeichnen der einzelnen Linien
+      triangle.moveTo(75, 50);
+      triangle.lineTo(100, 75);
+      triangle.lineTo(100, 25);
+      //Ausfüllen des Bereiches zwischen den Linien
+      triangle.fill();
+    }
+  }
