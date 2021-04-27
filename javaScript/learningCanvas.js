@@ -17,3 +17,15 @@ function draw() {
         canvasRec.fillRect(30, 30, 50, 50);    
       }
   }
+  function drawRectangularShape() {
+    var rectangularShape = document.getElementById('rectangularShape');
+    if (rectangularShape.getContext) {
+      var rectShape = rectangularShape.getContext('2d');
+      //Diese Fläche wird eingefärbt
+      rectShape.fillRect(25, 25, 100, 100);
+      //Diese Fläche wird wieder transpartent gemacht
+      rectShape.clearRect(45, 45, 60, 60);
+      //Zeichnet ein Rechteck mit transpartenter Fläche aber sichtabren Rändern
+      rectShape.strokeRect(50, 50, 50, 50);
+    }
+  }
