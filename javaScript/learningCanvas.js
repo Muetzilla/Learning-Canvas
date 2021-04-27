@@ -44,3 +44,25 @@ function draw() {
       triangle.fill();
     }
   }
+  function drawTwoTriangles() {
+    var canvasTwoTrinagels = document.getElementById('twoTriangles');
+    if(canvasTwoTrinagels.getContext){
+      var twoTringales= canvasTwoTrinagels.getContext('2d');
+  
+      // Filled triangle
+      twoTringales.beginPath();
+      //Wird bei einer gewissen Position begonnen
+      twoTringales.moveTo(25, 25);
+      twoTringales.lineTo(105, 25);
+      twoTringales.lineTo(25, 105);
+      twoTringales.fill();
+      //Neue dFigur kann nach .fill einfach begonnen werden
+      // Stroked triangle
+      twoTringales.beginPath();
+      twoTringales.moveTo(125, 125);
+      twoTringales.lineTo(125, 45);
+      twoTringales.lineTo(45, 125);
+      twoTringales.closePath();
+      twoTringales.stroke();
+    }
+  }
