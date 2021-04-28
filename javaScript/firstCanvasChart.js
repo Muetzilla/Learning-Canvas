@@ -18,11 +18,25 @@ function drawBar(ctx, upperLeftCornerX, upperLeftCornerY, width, height,color){
   ctx.fillRect(upperLeftCornerX,upperLeftCornerY,width,height);
   ctx.restore();
 }
+var music1 = document.getElementById('myRange1').value;
+var music2 = document.getElementById('myRange2').value;
+var music3 = document.getElementById('myRange3').value;
+var music4 = document.getElementById('myRange4').value;
+
+function getInputs(){
+  music1 = document.getElementById('myRange1').value;
+  music2 = document.getElementById('myRange2').value;
+  music3 = document.getElementById('myRange3').value;
+  music4 = document.getElementById('myRange4').value;
+
+  //console.log(music1);
+}
+
 var myVinyls = {
-  "Classical music": 10,
-  "Alternative rock": 14,
-  "Pop": 2,
-  "Jazz": 12
+  "Classical music": music1,
+  "Alternative rock": music2,
+  "Pop": music3,
+  "Jazz": music4
 };
 var Barchart = function(options){
   this.options = options;
@@ -91,27 +105,29 @@ var Barchart = function(options){
 
   }
 }
-/*ar myBarchart = new Barchart(
-  {
-      canvas:myCanvas,
-      padding:10,
-      gridScale:5,
-      gridColor:"#eeeeee",
-      data:myVinyls,
-      colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
-  }
-);
-myBarchart.draw();*/
-var myBarchart = new Barchart(
-  {
-      canvas:myCanvas,
-      seriesName:"Vinyl records",
-      padding:20,
-      gridScale:5,
-      gridColor:"#eeeeee",
-      data:myVinyls,
-      colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
-  }
-);
-myBarchart.draw();
-  
+
+function newBarchart(){
+  console.log("OY");
+  var clear = document.getElementById("barChartDiv");
+  ctx.clearRect(0, 0, 300, 300);
+  getInputs();
+  var myVinyls = {
+    "Classical music": music1,
+    "Alternative rock": music2,
+    "Pop": music3,
+    "Jazz": music4
+  };
+  var myBarchart = new Barchart(
+    {
+        canvas:myCanvas,
+        seriesName:"Bar Chart",
+        padding:20,
+        gridScale:5,
+        gridColor:"#eeeeee",
+        data:myVinyls,
+        colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
+    }
+  );
+  myBarchart.draw();
+}
+

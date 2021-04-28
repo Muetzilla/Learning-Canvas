@@ -5,13 +5,20 @@
     <title>Canvas Charts</title>
    <!-- <link rel="stylesheet" type="text/css" href="../style/learningCanvasStyle.css" media="screen" /> --> 
   </head>
-  <body>
+  <body onload="newBarchart()">
    <p>Learning Canvas Charts <a href="https://code.tutsplus.com/tutorials/how-to-draw-bar-charts-using-javascript-and-html5-canvas--cms-28561">by this tutorial </a>. </p>
     <br>
   <a href="../index.html">Home</a>
-  <canvas id="barChart"></canvas>
-    <script type="text/javascript" src="../javaScript/firstCanvasChart.js"></script>
+  <div class="slidecontainer">
+    <input type="range" min="1" max="100" value="20" class="slider" oninput="newBarchart()" id="myRange1">
+    <input type="range" min="1" max="100" value="30" class="slider" oninput="newBarchart()" id="myRange2">
+    <input type="range" min="1" max="100" value="40" class="slider" oninput="newBarchart()" id="myRange3">
+    <input type="range" min="1" max="100" value="10" class="slider" oninput="newBarchart()" id="myRange4">
 
-
+  </div>
+  <div id="barChartDiv">
+    <canvas id="barChart"></canvas>
+  </div>
+  <script type="text/javascript" src="../javaScript/firstCanvasChart.js"></script>
   </body>
 </html>
