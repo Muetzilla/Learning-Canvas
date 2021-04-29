@@ -1,7 +1,8 @@
 let myCanvas = document.getElementById("barChart");
+//Size of the Canvas area
 const widthCanvas = 1200;
-const heightCanvas = 600;
-//const skalaHeight = 100;
+const heightCanvas = 650;
+const skalaRange = 100;
 myCanvas.width = widthCanvas;
 myCanvas.height = heightCanvas; 
 var ctx = myCanvas.getContext("2d");
@@ -9,6 +10,7 @@ var violetBar = document.getElementById('myRange1').value;
 var blueBar = document.getElementById('myRange2').value;
 var greenBar = document.getElementById('myRange3').value;
 var orangeBar = document.getElementById('myRange4').value;
+//The bars
 var myVinyls = {
   "Classical music": violetBar,
   "Alternative rock": blueBar,
@@ -18,7 +20,7 @@ var myVinyls = {
     "Bar 2": 10,
     "Bar 3": 69
 };
-
+//Draw one grid line
 function drawLine(ctx, startX, startY, endX, endY,color){
   ctx.save();
   ctx.strokeStyle = color;
@@ -28,12 +30,14 @@ function drawLine(ctx, startX, startY, endX, endY,color){
   ctx.stroke();
   ctx.restore();
 }
+//Draw one bar
 function drawBar(ctx, upperLeftCornerX, upperLeftCornerY, width, height,color){
   ctx.save();
   ctx.fillStyle=color;
   ctx.fillRect(upperLeftCornerX,upperLeftCornerY,width,height);
   ctx.restore();
 }
+//Get the userinputs
 function getInputs(){
   violetBar = document.getElementById('myRange1').value;
   blueBar = document.getElementById('myRange2').value;
@@ -47,7 +51,7 @@ var Barchart = function(options){
   this.colors = options.colors;
 
   this.draw = function(){
-      var maxValue = 100;
+      var maxValue = skalaRange;
       for (var categ in this.options.data){
           maxValue = Math.max(maxValue,this.options.data[categ]);
       }
@@ -89,7 +93,7 @@ var Barchart = function(options){
               this.ctx,
               this.options.padding + barIndex * barSize ,
               this.canvas.height - barHeight - this.options.padding,
-              barSize,
+              125,
               barHeight,
               this.colors[barIndex%this.colors.length]
           );
@@ -106,9 +110,11 @@ var Barchart = function(options){
       this.ctx.restore();   
   }
 }
-
+//Create a new barchart
 function newBarchart(){
+  //Clear the existing canvas
   ctx.clearRect(0, 0, widthCanvas, heightCanvas);
+  //Get the userinputs again
   getInputs();
   var myVinyls = {
     "Classical music": violetBar,
@@ -121,6 +127,7 @@ function newBarchart(){
    //"Bar 4": 95
 
   };
+  //Create a new instanz of Barchart
   var myBarchart = new Barchart(
     {
         canvas:myCanvas,
@@ -132,6 +139,7 @@ function newBarchart(){
         colors:["#FF0000", "#00FF00","#0000FF", "#ABABAB","#123ABC", "#0FED1C", "#ABCDEF", "#781182", "#763623"]
     }
   );
+  //draw your instanz of Barchart
   myBarchart.draw();
 }
 
