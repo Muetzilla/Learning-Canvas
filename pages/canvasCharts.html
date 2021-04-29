@@ -4,20 +4,50 @@
     <meta charset="utf-8" />
     <title>Canvas Charts</title>
    <!-- <link rel="stylesheet" type="text/css" href="../style/learningCanvasStyle.css" media="screen" /> --> 
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
   </head>
   <body onload="newBarchart()">
    <p>Learning Canvas Charts <a href="https://code.tutsplus.com/tutorials/how-to-draw-bar-charts-using-javascript-and-html5-canvas--cms-28561">by this tutorial </a>. </p>
     <br>
   <a href="../index.html">Home</a>
   <div class="slidecontainer">
-    <input type="range" min="1" max="100" value="20" class="slider" oninput="newBarchart()" id="myRange1">
-    <input type="range" min="1" max="100" value="30" class="slider" oninput="newBarchart()" id="myRange2">
-    <input type="range" min="1" max="100" value="40" class="slider" oninput="newBarchart()" id="myRange3">
-    <input type="range" min="1" max="100" value="10" class="slider" oninput="newBarchart()" id="myRange4">
+    <div class="row">
+      <div class="col-lg-3">
+      <input type="range" min="1" max="100" value="20" class="slider" oninput="newBarchart()" id="myRange1">
+      </div>
+      <div class="col-lg-3">
+      <input type="range" min="1" max="100" value="30" class="slider" oninput="newBarchart()" id="myRange2">
+      </div>
+      <div class="col-lg-3">
+      <input type="range" min="1" max="100" value="40" class="slider" oninput="newBarchart()" id="myRange3">
+      </div>
+      <div class="col-lg-3">
+      <input type="range" min="1" max="100" value="10" class="slider" oninput="newBarchart()" id="myRange4">
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+    <label for="myRange1">Bar 1</label>
+    </div>
+    <div class="col-lg-3">
+    <label for="myRange2">Bar 2</label>
+    </div>
+    <div class="col-lg-3">
+    <label for="myRange3">Bar 3</label>
+    </div>
+    <div class="col-lg-3">
+    <label for="myRange4">Bar 4</label>
+    </div>
+  </div>
 
   </div>
-  <div id="barChartDiv">
+  <div class="row">
+    <div class="col-lg-12">
+  <div id="barChartDiv" style="text-align:center">
     <canvas id="barChart"></canvas>
+    </div>
+  </div>
   </div>
   <script type="text/javascript" src="../javaScript/firstCanvasChart.js"></script>
   </body>

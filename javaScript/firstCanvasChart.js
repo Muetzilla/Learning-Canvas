@@ -1,8 +1,24 @@
-var myCanvas = document.getElementById("barChart");
-myCanvas.width = 300;
-myCanvas.height = 300;
-  
+let myCanvas = document.getElementById("barChart");
+const widthCanvas = 1200;
+const heightCanvas = 600;
+const skalaHeight = 100;
+myCanvas.width = widthCanvas;
+myCanvas.height = heightCanvas; 
 var ctx = myCanvas.getContext("2d");
+var violetBar = document.getElementById('myRange1').value;
+var blueBar = document.getElementById('myRange2').value;
+var greenBar = document.getElementById('myRange3').value;
+var orangeBar = document.getElementById('myRange4').value;
+var myVinyls = {
+  "Classical music": violetBar,
+  "Alternative rock": blueBar,
+  "Pop": greenBar,
+  "Jazz": orangeBar,
+    "Bar 1": 10,
+    "Bar 2": 10,
+    "Bar 3": 69
+};
+
 function drawLine(ctx, startX, startY, endX, endY,color){
   ctx.save();
   ctx.strokeStyle = color;
@@ -18,26 +34,12 @@ function drawBar(ctx, upperLeftCornerX, upperLeftCornerY, width, height,color){
   ctx.fillRect(upperLeftCornerX,upperLeftCornerY,width,height);
   ctx.restore();
 }
-var music1 = document.getElementById('myRange1').value;
-var music2 = document.getElementById('myRange2').value;
-var music3 = document.getElementById('myRange3').value;
-var music4 = document.getElementById('myRange4').value;
-
 function getInputs(){
-  music1 = document.getElementById('myRange1').value;
-  music2 = document.getElementById('myRange2').value;
-  music3 = document.getElementById('myRange3').value;
-  music4 = document.getElementById('myRange4').value;
-
-  //console.log(music1);
+  violetBar = document.getElementById('myRange1').value;
+  blueBar = document.getElementById('myRange2').value;
+  greenBar = document.getElementById('myRange3').value;
+  orangeBar = document.getElementById('myRange4').value;
 }
-
-var myVinyls = {
-  "Classical music": music1,
-  "Alternative rock": music2,
-  "Pop": music3,
-  "Jazz": music4
-};
 var Barchart = function(options){
   this.options = options;
   this.canvas = options.canvas;
@@ -54,7 +56,7 @@ var Barchart = function(options){
 
       //drawing the grid lines
       var gridValue = 0;
-      while (gridValue <= maxValue){
+      while (gridValue <= skalaHeight){
           var gridY = canvasActualHeight * (1 - gridValue/maxValue) + this.options.padding;
           drawLine(
               this.ctx,
@@ -68,7 +70,7 @@ var Barchart = function(options){
           //writing grid markers
           this.ctx.save();
           this.ctx.fillStyle = this.options.gridColor;
-          this.ctx.font = "bold 10px Arial";
+          this.ctx.font = "bold 25px Arial";
           this.ctx.fillText(gridValue, 10,gridY - 2);
           this.ctx.restore();
 
@@ -82,10 +84,10 @@ var Barchart = function(options){
 
       for (categ in this.options.data){
           var val = this.options.data[categ];
-          var barHeight = Math.round( canvasActualHeight * val/maxValue) ;
+          var barHeight = Math.round(canvasActualHeight * val/maxValue) ;
           drawBar(
               this.ctx,
-              this.options.padding + barIndex * barSize,
+              this.options.padding + barIndex * barSize ,
               this.canvas.height - barHeight - this.options.padding,
               barSize,
               barHeight,
@@ -98,34 +100,36 @@ var Barchart = function(options){
       this.ctx.save();
       this.ctx.textBaseline="bottom";
       this.ctx.textAlign="center";
-      this.ctx.fillStyle = "#000000";
+      this.ctx.fillStyle = "#0000000";
       this.ctx.font = "bold 14px Arial";
       this.ctx.fillText(this.options.seriesName, this.canvas.width/2,this.canvas.height);
       this.ctx.restore();   
-
   }
 }
 
 function newBarchart(){
-  console.log("OY");
-  var clear = document.getElementById("barChartDiv");
-  ctx.clearRect(0, 0, 300, 300);
+  ctx.clearRect(0, 0, widthCanvas, heightCanvas);
   getInputs();
   var myVinyls = {
-    "Classical music": music1,
-    "Alternative rock": music2,
-    "Pop": music3,
-    "Jazz": music4
+    "Classical music": violetBar,
+    "Alternative rock": blueBar,
+    "Pop": greenBar,
+    "Jazz": orangeBar,
+    "Bar 1": 10,
+    "Bar 2": 10,
+    "Bar 3": 69,
+    "Bar 4": 95
+
   };
   var myBarchart = new Barchart(
     {
         canvas:myCanvas,
         seriesName:"Bar Chart",
-        padding:20,
+        padding:75,
         gridScale:5,
-        gridColor:"#eeeeee",
+        gridColor:"#bebebebe",
         data:myVinyls,
-        colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
+        colors:["#FF0000", "#00FF00","#0000FF", "#ABABAB","#123ABC", "#0FED1C", "#ABCDEF", "#781182", "#763623"]
     }
   );
   myBarchart.draw();
