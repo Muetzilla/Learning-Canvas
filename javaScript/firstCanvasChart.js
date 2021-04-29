@@ -12,13 +12,13 @@ var greenBar = document.getElementById('myRange3').value;
 var orangeBar = document.getElementById('myRange4').value;
 //The bars
 var myVinyls = {
-  "Classical music": violetBar,
-  "Alternative rock": blueBar,
-  "Pop": greenBar,
-  "Jazz": orangeBar,
-    "Bar 1": 10,
-    "Bar 2": 10,
-    "Bar 3": 69
+    "Bar 1": violetBar,
+    "Bar 2": blueBar,
+    "Bar 3": greenBar,
+    "Bar 4": orangeBar,
+    "Bar 5": 10,
+    "Bar 6": 10,
+    "Bar 7": 69
 };
 //Draw one grid line
 function drawLine(ctx, startX, startY, endX, endY,color){
@@ -85,7 +85,6 @@ var Barchart = function(options){
       var barIndex = 0;
       var numberOfBars = Object.keys(this.options.data).length;
       var barSize = (canvasActualWidth)/numberOfBars;
-
       for (categ in this.options.data){
           var val = this.options.data[categ];
           var barHeight = Math.round(canvasActualHeight * val/maxValue) ;
@@ -108,6 +107,21 @@ var Barchart = function(options){
       this.ctx.font = "bold 14px Arial";
       this.ctx.fillText(this.options.seriesName, this.canvas.width/2,this.canvas.height);
       this.ctx.restore();   
+
+       //draw legend
+       barIndex = 0;
+       var legend = document.querySelector("legend[for='barChart']");
+       var ul = document.createElement("ul");
+       legend.append(ul);
+       for (categ in this.options.data){
+           var li = document.createElement("li");
+           li.style.listStyle = "none";
+           li.style.borderLeft = "20px solid "+this.colors[barIndex%this.colors.length];
+           li.style.padding = "5px";
+           li.textContent = categ;
+           ul.append(li);
+           barIndex++;
+       }
   }
 }
 //Create a new barchart
@@ -117,13 +131,13 @@ function newBarchart(){
   //Get the userinputs again
   getInputs();
   var myVinyls = {
-    "Classical music": violetBar,
-    "Alternative rock": blueBar,
-    "Pop": greenBar,
-    "Jazz": orangeBar,
-    "Bar 1": 10,
-    "Bar 2": 10,
-    "Bar 3": 69
+    "Bar 1": violetBar,
+    "Bar 2": blueBar,
+    "Bar 3": greenBar,
+    "Bar 4": orangeBar,
+    "Bar 5": 10,
+    "Bar 6": 10,
+    "Bar 7": 69
    //"Bar 4": 95
 
   };
@@ -131,7 +145,7 @@ function newBarchart(){
   var myBarchart = new Barchart(
     {
         canvas:myCanvas,
-        seriesName:"Bar Chart",
+        seriesName:"Bars",
         padding:75,
         gridScale:5,
         gridColor:"#bebebebe",
