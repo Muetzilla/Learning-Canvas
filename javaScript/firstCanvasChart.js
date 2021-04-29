@@ -1,7 +1,7 @@
 let myCanvas = document.getElementById("barChart");
 const widthCanvas = 1200;
 const heightCanvas = 600;
-const skalaHeight = 100;
+//const skalaHeight = 100;
 myCanvas.width = widthCanvas;
 myCanvas.height = heightCanvas; 
 var ctx = myCanvas.getContext("2d");
@@ -47,7 +47,7 @@ var Barchart = function(options){
   this.colors = options.colors;
 
   this.draw = function(){
-      var maxValue = 0;
+      var maxValue = 100;
       for (var categ in this.options.data){
           maxValue = Math.max(maxValue,this.options.data[categ]);
       }
@@ -56,7 +56,7 @@ var Barchart = function(options){
 
       //drawing the grid lines
       var gridValue = 0;
-      while (gridValue <= skalaHeight){
+      while (gridValue <= maxValue){
           var gridY = canvasActualHeight * (1 - gridValue/maxValue) + this.options.padding;
           drawLine(
               this.ctx,
@@ -117,8 +117,8 @@ function newBarchart(){
     "Jazz": orangeBar,
     "Bar 1": 10,
     "Bar 2": 10,
-    "Bar 3": 69,
-    "Bar 4": 95
+    "Bar 3": 69
+   //"Bar 4": 95
 
   };
   var myBarchart = new Barchart(
