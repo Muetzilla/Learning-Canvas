@@ -4,4 +4,6 @@ canvas {
  #bar-chart{
     min-height: 250px;
 }
- }
+.legendBarChart{
+    display: inline-block;
+}

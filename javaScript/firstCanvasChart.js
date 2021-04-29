@@ -1,6 +1,6 @@
 let myCanvas = document.getElementById("barChart");
 //Size of the Canvas area
-const widthCanvas = 1200;
+const widthCanvas = 2000;
 const heightCanvas = 650;
 const skalaRange = 100;
 myCanvas.width = widthCanvas;
@@ -85,6 +85,7 @@ var Barchart = function(options){
       var barIndex = 0;
       var numberOfBars = Object.keys(this.options.data).length;
       var barSize = (canvasActualWidth)/numberOfBars;
+
       for (categ in this.options.data){
           var val = this.options.data[categ];
           var barHeight = Math.round(canvasActualHeight * val/maxValue) ;
@@ -137,8 +138,10 @@ function newBarchart(){
     "Bar 4": orangeBar,
     "Bar 5": 10,
     "Bar 6": 10,
-    "Bar 7": 69
-   //"Bar 4": 95
+    "Bar 7": 68,
+    "Bar 8": 69,
+    "Bar 9": 70,
+      //"Bar 4": 95
 
   };
   //Create a new instanz of Barchart
@@ -156,4 +159,5 @@ function newBarchart(){
   //draw your instanz of Barchart
   myBarchart.draw();
 }
+
 
