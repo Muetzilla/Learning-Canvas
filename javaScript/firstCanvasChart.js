@@ -1,6 +1,6 @@
 let myCanvas = document.getElementById("barChart");
 //Size of the Canvas area
-const widthCanvas = 2000;
+const widthCanvas = 1500;
 const heightCanvas = 650;
 const skalaRange = 100;
 myCanvas.width = widthCanvas;
@@ -10,6 +10,8 @@ var violetBar = document.getElementById('myRange1').value;
 var blueBar = document.getElementById('myRange2').value;
 var greenBar = document.getElementById('myRange3').value;
 var orangeBar = document.getElementById('myRange4').value;
+var isLegendDrawn = false;
+
 //The bars
 var myVinyls = {
     "Bar 1": violetBar,
@@ -18,7 +20,7 @@ var myVinyls = {
     "Bar 4": orangeBar,
     "Bar 5": 10,
     "Bar 6": 10,
-    "Bar 7": 69
+    "Bar 7": 70
 };
 //Draw one grid line
 function drawLine(ctx, startX, startY, endX, endY,color){
@@ -100,7 +102,7 @@ var Barchart = function(options){
 
           barIndex++;
       }
-      //drawing series name
+      //drawing series name 
       this.ctx.save();
       this.ctx.textBaseline="bottom";
       this.ctx.textAlign="center";
@@ -110,10 +112,11 @@ var Barchart = function(options){
       this.ctx.restore();   
 
        //draw legend
+       if(!isLegendDrawn){
        barIndex = 0;
        var legend = document.querySelector("legend[for='barChart']");
        var ul = document.createElement("ul");
-       legend.append(ul);
+       legend.append(ul); 
        for (categ in this.options.data){
            var li = document.createElement("li");
            li.style.listStyle = "none";
@@ -123,6 +126,8 @@ var Barchart = function(options){
            ul.append(li);
            barIndex++;
        }
+       isLegendDrawn = true;
+      }
   }
 }
 //Create a new barchart
