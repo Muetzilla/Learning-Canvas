@@ -55,7 +55,7 @@ var Barchart = function(options){
   this.draw = function(){
       var maxValue = skalaRange;
       for (var categ in this.options.data){
-          maxValue = Math.max(maxValue,this.options.data[categ]);
+          maxValue = Math.max(maxValue,this.options.data[categ]); 
       }
       var canvasActualHeight = this.canvas.height - this.options.padding * 2;
       var canvasActualWidth = this.canvas.width - this.options.padding * 2;
@@ -87,6 +87,7 @@ var Barchart = function(options){
       var barIndex = 0;
       var numberOfBars = Object.keys(this.options.data).length;
       var barSize = (canvasActualWidth)/numberOfBars;
+      var spacing = 125;
 
       for (categ in this.options.data){
           var val = this.options.data[categ];
@@ -95,7 +96,7 @@ var Barchart = function(options){
               this.ctx,
               this.options.padding + barIndex * barSize ,
               this.canvas.height - barHeight - this.options.padding,
-              125,
+              spacing,
               barHeight,
               this.colors[barIndex%this.colors.length]
           );
