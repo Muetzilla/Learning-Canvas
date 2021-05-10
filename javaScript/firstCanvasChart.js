@@ -76,7 +76,7 @@ var Barchart = function(options){
           //writing grid markers
           this.ctx.save();
           this.ctx.fillStyle = this.options.gridColor;
-          this.ctx.font = "bold 25px Arial";
+          this.ctx.font = "bold 25px Serif";
           this.ctx.fillText(gridValue, 10,gridY - 2);
           this.ctx.restore();
 
@@ -84,10 +84,11 @@ var Barchart = function(options){
       }
 
       //drawing the bars
+      var minWidthOneBar = 1125;
       var barIndex = 0;
       var numberOfBars = Object.keys(this.options.data).length;
       var barSize = (canvasActualWidth)/numberOfBars;
-      var spacing = 125;
+      var barWidth = Math.round(minWidthOneBar / numberOfBars);
 
       for (categ in this.options.data){
           var val = this.options.data[categ];
@@ -96,10 +97,11 @@ var Barchart = function(options){
               this.ctx,
               this.options.padding + barIndex * barSize ,
               this.canvas.height - barHeight - this.options.padding,
-              spacing,
+              barWidth,
               barHeight,
               this.colors[barIndex%this.colors.length]
           );
+          console.log(barWidth);
 
           barIndex++;
       }
@@ -108,7 +110,7 @@ var Barchart = function(options){
       this.ctx.textBaseline="bottom";
       this.ctx.textAlign="center";
       this.ctx.fillStyle = "#0000000";
-      this.ctx.font = "bold 14px Arial";
+      this.ctx.font = "bold 17px Serif";
       this.ctx.fillText(this.options.seriesName, this.canvas.width/2,this.canvas.height);
       this.ctx.restore();   
 
@@ -123,6 +125,7 @@ var Barchart = function(options){
             li.style.listStyle = "none";
             li.style.borderLeft = "20px solid "+this.colors[barIndex%this.colors.length];
             li.style.padding = "5px";
+            li.style.fontFamily = "Frutiger Light, serif";
             li.textContent = categ;
             ul.append(li);
             barIndex++;
@@ -143,10 +146,10 @@ function newBarchart(){
     "Bar 3": greenBar,
     "Bar 4": orangeBar,
     "Bar 5": 10,
-    "Bar 6": 10,
-    "Bar 7": 68,
+    "Bar 6": 25,
+    "Bar 7": 45,
     "Bar 8": 69,
-    "Bar 9": 70,
+    "Bar 9": 85,
   };
   //Create a new instanz of Barchart
   var myBarchart = new Barchart(
