@@ -113,20 +113,20 @@ var Barchart = function(options){
 
        //draw legend
        if(!isLegendDrawn){
-       barIndex = 0;
-       var legend = document.querySelector("legend[for='barChart']");
-       var ul = document.createElement("ul");
-       legend.append(ul); 
-       for (categ in this.options.data){
-           var li = document.createElement("li");
-           li.style.listStyle = "none";
-           li.style.borderLeft = "20px solid "+this.colors[barIndex%this.colors.length];
-           li.style.padding = "5px";
-           li.textContent = categ;
-           ul.append(li);
-           barIndex++;
-       }
-       isLegendDrawn = true;
+        barIndex = 0;
+        var legend = document.querySelector("legend[for='barChart']");
+        var ul = document.createElement("ul");
+        legend.append(ul); 
+        for (categ in this.options.data){
+            var li = document.createElement("li");
+            li.style.listStyle = "none";
+            li.style.borderLeft = "20px solid "+this.colors[barIndex%this.colors.length];
+            li.style.padding = "5px";
+            li.textContent = categ;
+            ul.append(li);
+            barIndex++;
+        }
+        isLegendDrawn = true;
       }
   }
 }
@@ -146,8 +146,6 @@ function newBarchart(){
     "Bar 7": 68,
     "Bar 8": 69,
     "Bar 9": 70,
-      //"Bar 4": 95
-
   };
   //Create a new instanz of Barchart
   var myBarchart = new Barchart(

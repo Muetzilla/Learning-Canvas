@@ -2,5 +2,8 @@
     margin: 100px;
 }
 #barChartDiv{
-    margin: 50px;
+    padding-left: 50px;
+}
+#title{
+    text-align: center;
 }
