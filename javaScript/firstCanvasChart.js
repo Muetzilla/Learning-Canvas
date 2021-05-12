@@ -84,6 +84,7 @@ var Barchart = function(options){
       }
 
       //drawing the bars
+      //with mipnWidthOneBar = 1125 the width by 9 Bars is 125px. Just change die value to get an other min width.
       var minWidthOneBar = 1125;
       var barIndex = 0;
       var numberOfBars = Object.keys(this.options.data).length;
@@ -126,7 +127,7 @@ var Barchart = function(options){
             li.style.borderLeft = "20px solid "+this.colors[barIndex%this.colors.length];
             li.style.padding = "5px";
             li.style.fontFamily = "Frutiger Light, serif";
-            li.textContent = categ;
+            li.textContent = categ + "   | " + " Value: TODO";
             ul.append(li);
             barIndex++;
         }
